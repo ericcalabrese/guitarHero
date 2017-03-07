@@ -1,0 +1,34 @@
+.key {
+	display: inline-block;
+ 	position: relative;
+	height: 100%;
+	width: 10%;
+	border: 3px solid black;
+}
+.key:nth-child(1) {
+	left: 35%
+}
+.key:nth-child(2) {
+	left: 40%;
+}
+.key:nth-child(3) {
+	left: 45%;
+}
+.key:nth-child(4) {
+	left: 50%;
+}
+.red {
+	background-color: red;
+}
+.blue {
+	background-color: blue;
+}
+.green {
+	background-color: green;
+}
+.yellow {
+	background-color: yellow;
+}
+.hidden {
+	display: none;
+}
