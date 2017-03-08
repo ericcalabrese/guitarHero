@@ -3,7 +3,6 @@
  	position: relative;
 	height: 100%;
 	width: 10%;
-	border: 3px solid black;
 }
 .key:nth-child(1) {
 	left: 35%
@@ -30,5 +29,5 @@
 	background-color: yellow;
 }
 .hidden {
-	display: none;
+	visibility: hidden;
 }

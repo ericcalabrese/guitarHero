@@ -202,12 +202,15 @@ export default class Board extends Component {
 		];
 
 		this.state = {
-			second: 0
+			second: 0,
+			score: 0
+
 		}
 
 	 
 		this.start = this.start.bind(this);
-	
+		this.onKeyDown = this.onKeyDown.bind(this);
+
 	}
 
 	start() {
@@ -224,15 +227,39 @@ export default class Board extends Component {
 		console.log("Eric")
 	}
 
+	onKeyDown(event)  {
+        console.log('in event')
+    	if(event.which === 65 && this.songArr[this.state.second].red){
+            this.setState({
+            	score: this.state.score+1
+            	});     
+        } else if(event.which === 83 && this.songArr[this.state.second].red){
+                this.setState({
+            		score: this.state.score+1
+            	}); 
+        } else if(event.which === 68 && this.songArr[this.state.second].red){
+               this.setState({
+            		score: this.state.score+1
+            	}); 
+        }else if(event.which === 70 && this.songArr[this.state.second].red){
+               this.setState({
+            		score: this.state.score+1
+            	}); 
+        }
+    } 
+
 	render() {
 		return(
 		<div>
 			<button onClick={this.start}>Start</button>
-			<div className="game">
+			<div tabIndex="1" onKeyDown={this.onKeyDown} className="game">
 				<KeySet note={this.songArr[this.state.second+3]} />
 				<KeySet note={this.songArr[this.state.second+2]} />
 				<KeySet note={this.songArr[this.state.second+1]} />
-				<KeySet isPlayer={true} note={this.songArr[this.state.second]} /> 
+				<KeySet isPlayer={true}  note={this.songArr[this.state.second]} /> 
+			</div>
+			<div>
+				<h3>{this.state.score}</h3>
 			</div>
 		</div>
 			);
