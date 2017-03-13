@@ -1,0 +1,33 @@
+.outlineR {
+	position: absolute;
+	top: 70%;
+	left: 69%;
+	border: 4px red solid;
+	width: 6%;
+	height: 12%;
+}
+.outlineB {
+	position: absolute;
+	top: 70%;
+	left: 77%;
+	border: 4px blue solid;
+	width: 6%;
+	height: 12%;
+	
+}
+.outlineG {
+	position: absolute;
+	top: 70%;
+	left: 85%;
+	border: 4px green solid;
+	width: 6%;
+	height: 12%;
+}
+.outlineY {
+	position: absolute;
+	top: 70%;
+	left: 93%;
+	border: 4px yellow solid;
+	width: 6%;
+	height: 12%;
+}
