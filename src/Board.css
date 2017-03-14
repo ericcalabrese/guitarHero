@@ -215,6 +215,9 @@ p {
   top: 80%;
   left: 70%;
 }
+.success {
+  background-color: black;
+}
 .winner {
   margin: -66% 0 0 56%;
   animation: fadein ease-in 2s;

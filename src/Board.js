@@ -6,23 +6,30 @@ const songArr = require("./SongArr.json");
 import Start from "../public/img/start.png";
 import Instructions from "../public/img/instructions.png";
 import Game from "../public/img/game.png";
+import Fire from "../public/audio/Fire_endBeforeChorus.ogg";
+
 
 export default class Board extends Component {
 	constructor(props){
 		super(props);
+
+		this.audio = new Audio('../public/audio/Fire_endBeforeChorus.ogg');
 
 		this.songArr = songArr;
 
 		this.state = {
 			second: 0,
 			score: 0,
-			gameScreen: 'start'
+			gameScreen: 'start',
+			success: '',
+			playSound: true
 		}
 
 	 
 		this.start = this.start.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.instruction = this.instruction.bind(this);
+		this.end = this.end.bind(this);
 	}
 
 	instruction() {
@@ -40,11 +47,13 @@ export default class Board extends Component {
 			if (this.state.second >= this.songArr.length) {
 			    if (this.state.score > 45){
 		    		this.setState({
+		    			second: 0,
 		    			gameScreen: 'winner'
 		    		});
 		    		clearInterval(this.gameInterval);
 		    	} else {
 		    		this.setState({
+		    			second: 0,
 		    			gameScreen: 'loser'
 		    		});
 		    		clearInterval(this.gameInterval);
@@ -53,11 +62,33 @@ export default class Board extends Component {
 
 		}
 
-		this.setState({
-			gameScreen: 'game'
-		})
-		
 		this.gameInterval = setInterval(beat, 192);
+
+
+		this.setState({
+			gameScreen: 'game',
+			playSound: 'true'
+		})
+
+console.log("ericcc");
+console.log(this.state.playSound);		
+
+			if (this.state.playSound === true) {
+				console.log("dickydoooo");
+				console.log(this.audio);
+				this.audio.play();
+				var playPromise = this.audio.play();
+
+// In browsers that don’t yet support this functionality,
+// playPromise won’t be defined.
+				if (playPromise !== undefined) {
+ 					playPromise.then(function() {
+this.audio.play(); 					 }).catch(function(error) {
+    // Automatic playback failed.
+    // Show a UI element to let the user manually start playback.
+ 					 });
+				}
+		}
 		
 	}
 
@@ -65,34 +96,34 @@ export default class Board extends Component {
         console.log('in event')
     	if(event.which === 65 && this.songArr[this.state.second].red){
             this.setState({
-            	score: this.state.score+1
+            	score: this.state.score+1,
+            	success: 'success'
             	});     
         } else if(event.which === 83 && this.songArr[this.state.second].blue){
                 this.setState({
-            		score: this.state.score+1
+            		score: this.state.score+1,
+                	success: 'success'
             	}); 
         } else if(event.which === 68 && this.songArr[this.state.second].green){
                this.setState({
-            		score: this.state.score+1
+            		score: this.state.score+1,
+            		success: 'success'
+
             	}); 
         }else if(event.which === 70 && this.songArr[this.state.second].yellow){
                this.setState({
-            		score: this.state.score+1
+            		score: this.state.score+1,
+            		success: 'success'
+
             	}); 
         }
     }
-
-    end(){
-    	if (this.state.second === this.songArr.length && this.state.score > 45){
-    		this.setState({
-    			gameScreen: 'winner'
-    		});
-    	} else {
-    		this.setState({
-    			gameScreen: 'loser'
-    		});
-    	}
-    } 
+    end() {
+    	this.setState({
+			gameScreen: 'game'
+		})
+    }
+   
 
 	render() {
 		switch(this.state.gameScreen){
@@ -100,7 +131,7 @@ export default class Board extends Component {
 				return (
 					<div className="game start">
 						<div className="startImg">
-							<img src={Start} />
+							<img alt="Jammin with Jimi Start Screen"src={Start} />
 						</div>
 						<div className="start">
 							<h1>Jammin with Jimi</h1>
@@ -113,7 +144,7 @@ export default class Board extends Component {
 				return (
 					<div className="game">
 						<div className="instImg">
-							<img src={Instructions} />
+							<img alt="Jammin with Jimi Instructions" src={Instructions} />
 							<div className="instButton">
 								<button id="button" onClick={this.start}>Play</button>
 							</div>
@@ -157,21 +188,22 @@ export default class Board extends Component {
 			case 'game':
 				return(
 				<div>		
-						<div tabIndex="1" onKeyDown={this.onKeyDown} className="game">							
-							<KeySet note={this.songArr[this.state.second+3]} />
-							<KeySet note={this.songArr[this.state.second+2]} />
-							<KeySet note={this.songArr[this.state.second+1]} />
-							<KeySet isPlayer={true}  note={this.songArr[this.state.second]} /> 
-							<Outline />
+					<div tabIndex="1" onKeyDown={this.onKeyDown} className="game">							
+						<KeySet note={this.songArr[this.state.second+3]} />
+						<KeySet note={this.songArr[this.state.second+2]} />
+						<KeySet note={this.songArr[this.state.second+1]} />
+						<KeySet isPlayer={true} note={this.songArr[this.state.second]} /> 
+						<Outline />
 						<div className="score">
 							<h3>Score</h3>
 							<h3>{this.state.score}</h3>
 						</div>
 						<div className="gameImg">
-							<img src={Game} />
+							<img alt="Jammin with Jimi Game Screen" src={Game} />
 						</div>
-						</div>
-				 	
+						<audio src={Fire} autoPlay></audio>﻿
+						
+					</div>		 	
 				</div>
 				);
 				break;
@@ -179,9 +211,9 @@ export default class Board extends Component {
 				return (
 					<div className="game">
 						<div className="instImg">
-							<img src={Instructions} />
+							<img alt="Jammin with Jimi Winner" src={Instructions} />
 							<div className="buttonW">
-								<button id="button" onClick={this.state.gameScreen}>Play Again</button>
+								<button id="button" onClick={this.start}>Play Again</button>
 							</div>
 							<div className="winner" >
 								<p>Rock On! You got a score of {this.state.score}!</p>
@@ -196,7 +228,7 @@ export default class Board extends Component {
 				return (
 					<div className="game">
 						<div className="instImg">
-							<img src={Instructions} />
+							<img alt="Jammin with Jimi Loser" src={Instructions} />
 							<div className="buttonW">
 								<button id="button" onClick={this.start}>Play Again</button>
 							</div>

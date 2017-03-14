@@ -1,5 +1,4 @@
 [
-	{"red":true, "blue":true, "green":true, "yellow":true},
 	{"red":false, "blue":false, "green":false, "yellow":false},
 	{"red":false, "blue":false, "green":false, "yellow":true},
 	{"red":false, "blue":false, "green":false, "yellow":false},

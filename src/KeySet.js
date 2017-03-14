@@ -11,6 +11,12 @@ export default class KeySet extends Component {
         const isBlue = this.props.note && this.props.note.blue;
         const isGreen = this.props.note && this.props.note.green;
         const isYellow = this.props.note && this.props.note.yellow;
+
+        const successR = isRed && this.props.isPLayer;
+        const successB = isBlue && this.props.isPLayer;
+        const successG = isGreen && this.props.isPLayer;
+        const successY = isYellow && this.props.isPLayer;
+
 		
         return (
 			<div className="KeySet">           
