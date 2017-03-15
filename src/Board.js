@@ -18,7 +18,7 @@ export default class Board extends Component {
 		this.state = {
 			second: 0,
 			score: 0,
-			gameScreen: 'instructions',
+			gameScreen: 'start',
 			success: '',
 		}
 
