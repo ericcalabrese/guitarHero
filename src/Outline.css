@@ -5,6 +5,7 @@
 	border: 4px red solid;
 	width: 6%;
 	height: 12%;
+	border-radius: 8px;
 }
 .outlineB {
 	position: absolute;
@@ -13,7 +14,7 @@
 	border: 4px blue solid;
 	width: 6%;
 	height: 12%;
-	
+	border-radius: 8px;
 }
 .outlineG {
 	position: absolute;
@@ -22,6 +23,7 @@
 	border: 4px green solid;
 	width: 6%;
 	height: 12%;
+	border-radius: 8px;
 }
 .outlineY {
 	position: absolute;
@@ -30,4 +32,5 @@
 	border: 4px yellow solid;
 	width: 6%;
 	height: 12%;
+	border-radius: 8px;
 }

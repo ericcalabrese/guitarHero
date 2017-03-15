@@ -6,7 +6,7 @@ const songArr = require("./SongArr.json");
 import Start from "../public/img/start.png";
 import Instructions from "../public/img/instructions.png";
 import Game from "../public/img/game.png";
-import Fire from "../public/audio/Fire_endBeforeChorus.ogg";
+import Fire from "../public/audio/fire3.mp3";
 
 
 export default class Board extends Component {
@@ -22,7 +22,6 @@ export default class Board extends Component {
 			score: 0,
 			gameScreen: 'start',
 			success: '',
-			playSound: true
 		}
 
 	 
@@ -48,12 +47,14 @@ export default class Board extends Component {
 			    if (this.state.score > 45){
 		    		this.setState({
 		    			second: 0,
+		    			score: 0,
 		    			gameScreen: 'winner'
 		    		});
 		    		clearInterval(this.gameInterval);
 		    	} else {
 		    		this.setState({
 		    			second: 0,
+		    			score: 0,
 		    			gameScreen: 'loser'
 		    		});
 		    		clearInterval(this.gameInterval);
@@ -66,31 +67,28 @@ export default class Board extends Component {
 
 
 		this.setState({
-			gameScreen: 'game',
-			playSound: 'true'
+			gameScreen: 'game'
 		})
+	
 
-console.log("ericcc");
-console.log(this.state.playSound);		
+			// if (this.state.playSound === true) {
+			// 	console.log("dickydoooo");
+			// 	console.log(this.audio);
+			// 	this.audio.play();
+			// 	var playPromise = this.audio.play();
 
-			if (this.state.playSound === true) {
-				console.log("dickydoooo");
-				console.log(this.audio);
-				this.audio.play();
-				var playPromise = this.audio.play();
-
-// In browsers that don’t yet support this functionality,
-// playPromise won’t be defined.
-				if (playPromise !== undefined) {
- 					playPromise.then(function() {
-this.audio.play(); 					 }).catch(function(error) {
-    // Automatic playback failed.
-    // Show a UI element to let the user manually start playback.
- 					 });
-				}
-		}
+// // In browsers that don’t yet support this functionality,
+// // playPromise won’t be defined.
+// 				if (playPromise !== undefined) {
+//  					playPromise.then(function() {
+// this.audio.play(); 					 }).catch(function(error) {
+//     // Automatic playback failed.
+//     // Show a UI element to let the user manually start playback.
+//  					 });
+// 				}
+ 		// }
 		
-	}
+ 	}
 
 	onKeyDown(event)  {
         console.log('in event')
