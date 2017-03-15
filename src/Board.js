@@ -13,14 +13,12 @@ export default class Board extends Component {
 	constructor(props){
 		super(props);
 
-		this.audio = new Audio('../public/audio/Fire_endBeforeChorus.ogg');
-
 		this.songArr = songArr;
 
 		this.state = {
 			second: 0,
 			score: 0,
-			gameScreen: 'start',
+			gameScreen: 'instructions',
 			success: '',
 		}
 
@@ -28,7 +26,6 @@ export default class Board extends Component {
 		this.start = this.start.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.instruction = this.instruction.bind(this);
-		this.end = this.end.bind(this);
 	}
 
 	instruction() {
@@ -47,14 +44,12 @@ export default class Board extends Component {
 			    if (this.state.score > 45){
 		    		this.setState({
 		    			second: 0,
-		    			score: 0,
 		    			gameScreen: 'winner'
 		    		});
 		    		clearInterval(this.gameInterval);
 		    	} else {
 		    		this.setState({
 		    			second: 0,
-		    			score: 0,
 		    			gameScreen: 'loser'
 		    		});
 		    		clearInterval(this.gameInterval);
@@ -70,28 +65,11 @@ export default class Board extends Component {
 			gameScreen: 'game'
 		})
 	
-
-			// if (this.state.playSound === true) {
-			// 	console.log("dickydoooo");
-			// 	console.log(this.audio);
-			// 	this.audio.play();
-			// 	var playPromise = this.audio.play();
-
-// // In browsers that don’t yet support this functionality,
-// // playPromise won’t be defined.
-// 				if (playPromise !== undefined) {
-//  					playPromise.then(function() {
-// this.audio.play(); 					 }).catch(function(error) {
-//     // Automatic playback failed.
-//     // Show a UI element to let the user manually start playback.
-//  					 });
-// 				}
- 		// }
 		
  	}
 
 	onKeyDown(event)  {
-        console.log('in event')
+        console.log(this.state.success);
     	if(event.which === 65 && this.songArr[this.state.second].red){
             this.setState({
             	score: this.state.score+1,
@@ -116,12 +94,7 @@ export default class Board extends Component {
             	}); 
         }
     }
-    end() {
-    	this.setState({
-			gameScreen: 'game'
-		})
-    }
-   
+    
 
 	render() {
 		switch(this.state.gameScreen){
@@ -156,8 +129,8 @@ export default class Board extends Component {
 									everyone’s talking about</p>
 							</div>
 							<div className="num3" >
-								<p>Lets see if you can play one of <br/>
-								&emsp;&emsp;&emsp;my tunes</p>
+								<p>Lets see if you can play <br/>
+								&emsp;&emsp;&emsp;one of my tunes</p>
 							</div>
 							<div className="num4">
 								<p>First, let me show you <br/>
@@ -172,7 +145,8 @@ export default class Board extends Component {
 								    D = green&nbsp;&nbsp;&nbsp;&nbsp;F = yellow</p>
 							</div>
 							<div className="num7">
-								<p>Press the correct key once the colored box falls into its matching outline</p>
+								<p>Press the correct key once <br/>
+								the colored box falls into its matching outline</p>
 							</div>
 							<div className="num8">
 								<p>Each correct note increases your score</p>
@@ -214,8 +188,8 @@ export default class Board extends Component {
 								<button id="button" onClick={this.start}>Play Again</button>
 							</div>
 							<div className="winner" >
-								<p>Rock On! You got a score of {this.state.score}!</p>
-								<p>&nbsp;&nbsp;&nbsp;&nbsp;You got a lot of soul brother</p>
+								<p>Rock On! You got a score of {this.state.score}</p>
+								<p>&nbsp;&nbsp;&nbsp;&nbsp;You got a lot of soul</p>
 								<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lets jam sometime</p>
 							</div>
 						</div>
@@ -231,7 +205,7 @@ export default class Board extends Component {
 								<button id="button" onClick={this.start}>Play Again</button>
 							</div>
 							<div className="loser" >
-								<p>Nice try, man!</p>
+								<p>Nice try, man</p>
 								<p>Your score was {this.state.score}.</p>
 								<p>Better luck next time</p>
 							</div>

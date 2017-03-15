@@ -17,13 +17,13 @@ export default class KeySet extends Component {
         const successG = isGreen && this.props.isPLayer;
         const successY = isYellow && this.props.isPLayer;
 
-		
+
         return (
 			<div className="KeySet">           
-                <Key color="red" active={isRed} />
-                <Key color="blue" active={isBlue} />
-                <Key color="green" active={isGreen} />
-                <Key color="yellow" active={isYellow} />
+                <Key color="red" active={isRed} score={successR} />
+                <Key color="blue" active={isBlue} score={successB} />
+                <Key color="green" active={isGreen} score={successG} />
+                <Key color="yellow" active={isYellow} score={successY} />
     		</div>
 		);
 	}

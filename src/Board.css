@@ -132,8 +132,8 @@ p {
 .num6 {
   float: right;
   margin: -10% 15%;
-  -webkit-animation: fadeinoutD 4s linear 1 forwards;
-  animation: fadeinoutD 4s linear 1 forwards;
+  -webkit-animation: fadeinoutD 6s linear 1 forwards;
+  animation: fadeinoutD 6s linear 1 forwards;
   animation-delay: 16s;
 }
 @-webkit-keyframes fadeinoutD {
@@ -148,7 +148,7 @@ p {
 }
 .num7 {
   float: right;
-  margin: 0;
+  margin: -17% -35%;
   -webkit-animation: fadeinoutD 4s linear 1 forwards;
   animation: fadeinoutD 4s linear 1 forwards;
   animation-delay: 20s;
