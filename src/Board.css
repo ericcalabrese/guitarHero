@@ -79,10 +79,10 @@ p {
 }
 .num3 {
   float: right;
-  margin: -15% 11%;
+  margin: -17% 14%;
   -webkit-animation: fadeinoutC 5s linear 1 forwards;
   animation: fadeinoutC 5s linear 1 forwards;
-  animation-delay: 8s;
+  animation-delay: 7s;
 
 }
 @-webkit-keyframes fadeinoutC {
@@ -97,7 +97,7 @@ p {
 }
 .num4 {
   float: right;
-  margin: -7% 12%;
+  margin: -8% 17%;
   -webkit-animation: fadeinoutD 4s linear 1 forwards;
   animation: fadeinoutD 4s linear 1 forwards;
   animation-delay: 10s;
@@ -115,16 +115,16 @@ p {
 .num5 {
   float: right;
   margin: -17% 13%;
-  -webkit-animation: fadeinoutD 6s linear 1 forwards;
-  animation: fadeinoutD 6s linear 1 forwards;
+  -webkit-animation: fadeinoutE 6s linear 1 forwards;
+  animation: fadeinoutE 6s linear 1 forwards;
   animation-delay: 14s;
 }
-@-webkit-keyframes fadeinoutD {
+@-webkit-keyframes fadeinoutE {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
-@keyframes fadeinoutD {
+@keyframes fadeinoutE {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
@@ -132,70 +132,87 @@ p {
 .num6 {
   float: right;
   margin: -10% 15%;
-  -webkit-animation: fadeinoutD 6s linear 1 forwards;
-  animation: fadeinoutD 6s linear 1 forwards;
+  -webkit-animation: fadeinoutF 6s linear 1 forwards;
+  animation: fadeinoutF 6s linear 1 forwards;
   animation-delay: 16s;
 }
-@-webkit-keyframes fadeinoutD {
+@-webkit-keyframes fadeinoutF {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
-@keyframes fadeinoutD {
+@keyframes fadeinoutF {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
 .num7 {
   float: right;
-  margin: -17% -35%;
-  -webkit-animation: fadeinoutD 4s linear 1 forwards;
-  animation: fadeinoutD 4s linear 1 forwards;
-  animation-delay: 20s;
+  margin: -14% 9%;
+  -webkit-animation: fadeinoutG 4s linear 1 forwards;
+  animation: fadeinoutG 4s linear 1 forwards;
+  animation-delay: 22s;
 }
-@-webkit-keyframes fadeinoutD {
+@-webkit-keyframes fadeinoutG {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
-@keyframes fadeinoutD {
+@keyframes fadeinoutG {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
 .num8 {
   float: right;
-  margin: -0;
-  -webkit-animation: fadeinoutD 4s linear 1 forwards;
-  animation: fadeinoutD 4s linear 1 forwards;
-  animation-delay: 22s;
+  margin: -15% 11%;
+  -webkit-animation: fadeinoutH 4s linear 1 forwards;
+  animation: fadeinoutH 4s linear 1 forwards;
+  animation-delay: 26s;
 }
-@-webkit-keyframes fadeinoutD {
+@-webkit-keyframes fadeinoutH {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
-@keyframes fadeinoutD {
+@keyframes fadeinoutH {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
 .num9 {
   float: right;
-  margin: 0;
-  -webkit-animation: fadeinoutD 4s linear 1 forwards;
-  animation: fadeinoutD 4s linear 1 forwards;
-  animation-delay: 26s;
+  margin: -7% 8%;
+  -webkit-animation: fadeinoutI 4s linear 1 forwards;
+  animation: fadeinoutI 4s linear 1 forwards;
+  animation-delay: 28s;
 }
-@-webkit-keyframes fadeinoutD {
+@-webkit-keyframes fadeinoutI {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
 }
-@keyframes fadeinoutD {
+@keyframes fadeinoutI {
   0% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
+}
+.num10 {
+  float: right;
+  margin: -11% 16%;
+  -webkit-animation: fadeinI 4s linear 1 forwards;
+  animation: fadeinI 4s linear 1 forwards;
+  animation-delay: 32s;
+}
+@-webkit-keyframes fadeinI {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes fadeinI {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
 }
 .hidden {
 	visibility: hidden;
@@ -216,7 +233,7 @@ p {
   left: 70%;
 }
 .success {
-  background-color: black;
+  background-color: #DAA520;
 }
 .winner {
   margin: -66% 0 0 56%;

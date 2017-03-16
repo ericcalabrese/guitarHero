@@ -13,13 +13,13 @@ export default class Board extends Component {
 	constructor(props){
 		super(props);
 
-		this.songArr = songArr;
+		
 
 		this.state = {
 			second: 0,
 			score: 0,
 			gameScreen: 'start',
-			success: '',
+			songArr: songArr
 		}
 
 	 
@@ -36,61 +36,60 @@ export default class Board extends Component {
 
 	start() {
 		const beat = () => {
-			this.setState({
-				second: this.state.second+1
-			});
+			console.log("fuck " + this.state.second);
+			console.log("you " + this.state.songArr.length);
+			
 
-			if (this.state.second >= this.songArr.length) {
+			if (this.state.second >= this.state.songArr.length - 4) {
 			    if (this.state.score > 45){
 		    		this.setState({
-		    			second: 0,
-		    			gameScreen: 'winner'
+		    			gameScreen: 'winner'	
 		    		});
 		    		clearInterval(this.gameInterval);
 		    	} else {
 		    		this.setState({
-		    			second: 0,
 		    			gameScreen: 'loser'
 		    		});
 		    		clearInterval(this.gameInterval);
 		    	}
+
 			}
+			this.setState({
+				second: this.state.second+1
+			});
 
 		}
 
 		this.gameInterval = setInterval(beat, 192);
 
-
 		this.setState({
 			gameScreen: 'game'
 		})
-	
 		
  	}
 
 	onKeyDown(event)  {
         console.log(this.state.success);
-    	if(event.which === 65 && this.songArr[this.state.second].red){
+    	if(event.which === 65 && this.state.songArr[this.state.second].red){
+            this.state.songArr[this.state.second].flash = 'success'
             this.setState({
-            	score: this.state.score+1,
-            	success: 'success'
-            	});     
-        } else if(event.which === 83 && this.songArr[this.state.second].blue){
+            	score: this.state.score+1
+            	});
+
+        } else if(event.which === 83 && this.state.songArr[this.state.second].blue){
+                this.state.songArr[this.state.second].flash = 'success'
                 this.setState({
-            		score: this.state.score+1,
-                	success: 'success'
+            		score: this.state.score+1
             	}); 
-        } else if(event.which === 68 && this.songArr[this.state.second].green){
-               this.setState({
-            		score: this.state.score+1,
-            		success: 'success'
-
+        } else if(event.which === 68 && this.state.songArr[this.state.second].green){
+               	this.state.songArr[this.state.second].flash = 'success'
+               	this.setState({
+            		score: this.state.score+1
             	}); 
-        }else if(event.which === 70 && this.songArr[this.state.second].yellow){
-               this.setState({
-            		score: this.state.score+1,
-            		success: 'success'
-
+        }else if(event.which === 70 && this.state.songArr[this.state.second].yellow){
+               	this.state.songArr[this.state.second].flash = 'success'
+               	this.setState({
+            		score: this.state.score+1
             	}); 
         }
     }
@@ -126,15 +125,15 @@ export default class Board extends Component {
 							</div>
 							<div className="num2">
 								<p>You’re that new guitar player <br/>
-									everyone’s talking about</p>
+								&nbsp;&nbsp;&nbsp;&nbsp;everyone’s talking about</p>
 							</div>
 							<div className="num3" >
 								<p>Lets see if you can play <br/>
-								&emsp;&emsp;&emsp;one of my tunes</p>
+								&emsp;one of my tunes</p>
 							</div>
 							<div className="num4">
-								<p>First, let me show you <br/>
-								&emsp;&emsp;how to play</p>
+								<p>First, I{"'"}ll show you <br/>
+								&emsp;how to play</p>
 							</div>
 							<div className="num5">
 								<p>Each key on the keyboard <br/>
@@ -146,13 +145,21 @@ export default class Board extends Component {
 							</div>
 							<div className="num7">
 								<p>Press the correct key once <br/>
-								the colored box falls into its matching outline</p>
+								the colored box falls into its <br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;matching outline</p>
 							</div>
 							<div className="num8">
-								<p>Each correct note increases your score</p>
+								<p>Each correct note increases <br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your score</p>
 							</div>
 							<div className="num9">
-								<p>Click Play to begin</p>
+								<p>Click on my picture to activate <br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;the keyboard</p>
+							</div>
+							<div className="num10">
+								<p>Press Play to begin</p>
 							</div>
 					</div>
 					);
@@ -161,10 +168,10 @@ export default class Board extends Component {
 				return(
 				<div>		
 					<div tabIndex="1" onKeyDown={this.onKeyDown} className="game">							
-						<KeySet note={this.songArr[this.state.second+3]} />
-						<KeySet note={this.songArr[this.state.second+2]} />
-						<KeySet note={this.songArr[this.state.second+1]} />
-						<KeySet isPlayer={true} note={this.songArr[this.state.second]} /> 
+						<KeySet note={this.state.songArr[this.state.second+3]} />
+						<KeySet note={this.state.songArr[this.state.second+2]} />
+						<KeySet note={this.state.songArr[this.state.second+1]} />
+						<KeySet isPlayer={true} flash={this.state.flash} note={this.state.songArr[this.state.second]} /> 
 						<Outline />
 						<div className="score">
 							<h3>Score</h3>
@@ -185,7 +192,7 @@ export default class Board extends Component {
 						<div className="instImg">
 							<img alt="Jammin with Jimi Winner" src={Instructions} />
 							<div className="buttonW">
-								<button id="button" onClick={this.start}>Play Again</button>
+								<button id="button" onClick={()=>{location="/"}}>Play Again</button>
 							</div>
 							<div className="winner" >
 								<p>Rock On! You got a score of {this.state.score}</p>
@@ -202,11 +209,11 @@ export default class Board extends Component {
 						<div className="instImg">
 							<img alt="Jammin with Jimi Loser" src={Instructions} />
 							<div className="buttonW">
-								<button id="button" onClick={this.start}>Play Again</button>
+								<button id="button" onClick={()=>{location="/"}}>Play Again</button>
 							</div>
 							<div className="loser" >
 								<p>Nice try, man</p>
-								<p>Your score was {this.state.score}.</p>
+								<p>Your score was {this.state.score}</p>
 								<p>Better luck next time</p>
 							</div>
 						</div>
