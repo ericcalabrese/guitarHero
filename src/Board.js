@@ -36,10 +36,7 @@ export default class Board extends Component {
 
 	start() {
 		const beat = () => {
-			console.log("fuck " + this.state.second);
-			console.log("you " + this.state.songArr.length);
 			
-
 			if (this.state.second >= this.state.songArr.length - 4) {
 			    if (this.state.score > 45){
 		    		this.setState({
@@ -124,39 +121,37 @@ export default class Board extends Component {
 								<p>Hey I heard about you</p>
 							</div>
 							<div className="num2">
-								<p>You’re that new guitar player <br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;everyone’s talking about</p>
+								<p>You’re that new guitar player</p>
+								<p id="pos1">everyone’s talking about</p>
 							</div>
 							<div className="num3" >
-								<p>Lets see if you can play <br/>
-								&emsp;one of my tunes</p>
+								<p>Lets see if you can play</p>
+								<p id="pos2">one of my tunes</p>
 							</div>
 							<div className="num4">
-								<p>First, I{"'"}ll show you <br/>
-								&emsp;how to play</p>
+								<p>First, I{"'"}ll show you</p>
+								<p id="pos3">how to play</p>
 							</div>
 							<div className="num5">
 								<p>Each key on the keyboard <br/>
 									represents a different color</p>
 							</div>
 							<div className="num6">
-								<p>A = red&nbsp;&nbsp;&nbsp;&nbsp;S = blue <br/>
-								    D = green&nbsp;&nbsp;&nbsp;&nbsp;F = yellow</p>
+								<p>A = red&nbsp;&nbsp;&nbsp;&nbsp;S = blue</p>
+								<p id="pos4">D = green&nbsp;&nbsp;&nbsp;F = yellow</p>
 							</div>
 							<div className="num7">
 								<p>Press the correct key once <br/>
-								the colored box falls into its <br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;matching outline</p>
+								the colored box falls into its</p>
+								<p id="pos5">matching outline</p>
 							</div>
 							<div className="num8">
-								<p>Each correct note increases <br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your score</p>
+								<p>Each correct note increases</p>
+								<p id="pos6">your score</p>
 							</div>
 							<div className="num9">
-								<p>Click on my picture to activate <br/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;the keyboard</p>
+								<p>Click on my picture to activate</p>
+								<p id="pos7">the keyboard</p>
 							</div>
 							<div className="num10">
 								<p>Press Play to begin</p>
